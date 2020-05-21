@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/SearchRamenAroundDaiei.css">
+    <title>ダイエー行脚のお供 ～ラーメン編～</title>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCWXLA52aD9ZcftkiLIREbzaAZfWSezyCM&libraries=places"></script>
+    <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/SearchRamenAroundDaiei.js"></script>
+</head>
+<body>
+    <div class="search">
+        <a>＜ダイエーを検索してね！＞</a><br />
+        <div class="search__location">
+            <a>都道府県</a><br />
+            <select name="location" class="location">
+                <option value="no-select">都道府県を指定してください</option>
+                <option value="kyoto">京都府</option>
+                <option value="osaka">大阪府</option>
+                <option value="hyogo">兵庫県</option>
+                <option value="nara">奈良県</option>
+                <option value="wakayama">和歌山県</option>
+                <option value="shiga">滋賀県</option>
+                <option value="tokyo">東京都</option>
+                <option value="kanagawa">神奈川県</option>
+                <option value="saitama">埼玉県</option>
+                <option value="chiba">千葉県</option>
+            </select>
+        </div>
+        <div class="search__name">
+            <a>店舗名</a><br />
+            <select name="name" class="name" style="width: 330px">
+                <option value="no-select">都道府県を指定してください</option>
+            </select>
+        </div>
+    </div>
+
+    <p>ラーメン屋を出力するよ！</p>
+
+    <div class="moku">
+        <img src="img/moku.jpg">
+    </div>
+
+    <div id="googleMap">
+    </div>
+    <div class="loading hide">
+    </div>
+</body>
+</html>
