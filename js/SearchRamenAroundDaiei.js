@@ -1,14 +1,26 @@
 ﻿//ダイエーAPI取得変数
 var daieiData;
 
+//Mapに表示するダイエーマーカー
+const daieiMarker = 'img/daieiIcon.png'
+
+//Mapに表示するラーメン屋マーカー
+const ramenMarker = 'img/ramenIcon.png'
+
+//Mapの施設情報
 var infowindow;
+
+//Mapのマーカー格納配列
 var markers = [];
+
+//Map情報
 var map;
 
 $(document).ready(function () {
 
     //ダイエーAPIからJSONを取得
     $.ajaxSetup({ async: false });//同期通信(json取ってくるまで待つ)
+    //以下のJSONは「http://www.daiei.co.jp/」より店舗名と住所を取得し加工
     $.getJSON('https://jsondata.okiba.me/v1/json/LyzNg200519013700', function (data) {
         daieiData = data;
     });
@@ -31,9 +43,11 @@ $(document).ready(function () {
 
         //店舗情報の数だけループ
         for (let shop in daieiData) {
+            
+            const activeItem = daieiData[shop];
 
-            const activeShopLocation = daieiData[shop].Location;
-            const activeShopName = daieiData[shop].Name;
+            const activeShopLocation = activeItem.Location;
+            const activeShopName = activeItem.Name;
 
             //htmlタグ出力用のカウンタ
             let count = 0;
@@ -100,6 +114,7 @@ function getLocation(lat, lng,name) {
     const latitude = lat;
     const longitude = lng;
     const latlng = new google.maps.LatLng(latitude, longitude);
+    
     // 緯度経度を中心にマップを生成
     map = new google.maps.Map(document.getElementById('googleMap'), {
         center: latlng,
@@ -107,21 +122,8 @@ function getLocation(lat, lng,name) {
     });
     
     //ダイエーのマーカーを設置
-    createDaieiMarker(latlng, 'img/daieiIcon.png',name)
-
-    // 地図ドラッグ時のイベント
-    map.addListener("dragend", function () {
-        clearMarkerAll(map);//一度マーカーをすべて消す
-
-        //ダイエーのマーカーを設置
-        createDaieiMarker(latlng, 'img/daieiIcon.png', name)
-
-        service.textSearch({
-            location: latlng,
-            radius: 100,
-            query: 'ラーメン'
-        }, callback);
-    });
+    createDaieiMarker(latlng,name);
+    
     //ダイエーから1キロ以内のラーメン屋を検索
     infowindow = new google.maps.InfoWindow();
     const service = new google.maps.places.PlacesService(map);
@@ -136,25 +138,25 @@ function getLocation(lat, lng,name) {
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
-            createRamenMarker(results[i], 'img/ramenIcon.png');
+            createRamenMarker(results[i]);
         }
     }
 }
 
 //地図上にダイエーのマーカーを生成
-function createDaieiMarker(place, Icon, shopName) {
+function createDaieiMarker(place,shopName) {
     const marker = new google.maps.Marker({
         map: map,
         position: place,
         icon: new google.maps.MarkerImage(
-            Icon,
+            daieiMarker,
             new google.maps.Size(50, 50),    //マーカー画像のサイズ
             new google.maps.Point(0, 0),     //位置（0,0で固定）
             new google.maps.Point(30, 50), //位置（任意の調整値）
         )
     });
 
-    markers.push(marker);//重要　引数を関数の外にで使えるようにする。
+    markers.push(marker);
 
     //地図上のマーカーをクリックした際の動作、吹き出しの中身
     google.maps.event.addListener(marker, 'mouseover', function () {
@@ -164,18 +166,19 @@ function createDaieiMarker(place, Icon, shopName) {
 }
 
 //地図上にラーメン屋のマーカーを生成
-function createRamenMarker(place, Icon) {
+function createRamenMarker(place) {
     const marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
         icon: new google.maps.MarkerImage(
-            Icon,
+            ramenMarker,
             new google.maps.Size(50, 50),    //マーカー画像のサイズ
             new google.maps.Point(0, 0),     //位置（0,0で固定）
             new google.maps.Point(30, 50), //位置（任意の調整値）
         )
     });
-    markers.push(marker);//重要　引数を関数の外にで使えるようにする。
+    
+    markers.push(marker);
 
     //地図上のマーカーをクリックした際の動作、吹き出しの中身
     google.maps.event.addListener(marker, 'mouseover', function () {
