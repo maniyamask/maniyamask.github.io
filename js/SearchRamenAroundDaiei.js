@@ -105,6 +105,9 @@ function getLocation(lat, lng,name) {
         center: latlng,
         zoom: 16
     });
+    
+    //ダイエーのマーカーを設置
+    createDaieiMarker(latlng, 'img/daieiIcon.png',name)
 
     // 地図ドラッグ時のイベント
     map.addListener("dragend", function () {
@@ -122,10 +125,6 @@ function getLocation(lat, lng,name) {
     //ダイエーから1キロ以内のラーメン屋を検索
     infowindow = new google.maps.InfoWindow();
     const service = new google.maps.places.PlacesService(map);
-    
-    //ダイエーのマーカーを設置
-    createDaieiMarker(latlng, 'img/daieiIcon.png',name)
-    
     service.textSearch({
         location: latlng,
         radius: 100,
