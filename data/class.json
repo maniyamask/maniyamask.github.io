@@ -1,0 +1,101 @@
+[
+  {
+    "name": "基礎経済学",
+    "koma": [ "月1", "木2" ],
+    "charge": "伊藤",
+    "type": "必修",
+    "code": "1109215",
+    "grade": 4,
+    "input": true
+  },
+  {
+    "name": "ミクロ経済学",
+    "koma": [ "月1", "木2" ],
+    "charge": "三上",
+    "type": "必修",
+    "code": "33333",
+    "grade": 4,
+    "input": false
+  },
+  {
+    "name": "多文化共生論",
+    "koma": [ "月1" ],
+    "charge": "松田",
+    "type": "専門関連",
+    "code": "123456",
+    "grade": 2,
+    "input": false
+  },
+  {
+    "name": "マクロ経済学",
+    "koma": [ "火2", "金1" ],
+    "charge": "大住",
+    "type": "必修",
+    "code": "9883498",
+    "grade": 4,
+    "input": true
+  },
+  {
+    "name": "国際金融論",
+    "koma": [ "火2", "金1" ],
+    "charge": "伊藤",
+    "type": "必修",
+    "code": "1109216",
+    "grade": 4,
+    "input": false
+  },
+  {
+    "name": "貿易政策論",
+    "koma": [ "月3", "水1" ],
+    "charge": "石黒",
+    "type": "国際経済学科",
+    "code": "9883999",
+    "grade": 4,
+    "input": true
+  },
+  {
+    "name": "物流産業論",
+    "koma": [ "水3", "水4" ],
+    "charge": "佐藤",
+    "type": "hoge",
+    "code": "9881111",
+    "grade": 4,
+    "input": true
+  },
+  {
+    "name": "piyopiyo",
+    "koma": [ "火3", "火4" ],
+    "charge": "hogeee",
+    "type": "国際経済学科",
+    "code": "9113999",
+    "grade": 4,
+    "input": true
+  },
+  {
+    "name": "日本史概説",
+    "koma": [ "水5" ],
+    "charge": "吉川",
+    "type": "国際経済学科",
+    "code": "98836789",
+    "grade": 2,
+    "input": false
+  },
+  {
+    "name": "piyooo",
+    "koma": [ "金3", "金4" ],
+    "charge": "foo",
+    "type": "国際経済学科",
+    "code": "9116789",
+    "grade": 4,
+    "input": true
+  },
+  {
+    "name": "test",
+    "koma": [ "月1" ],
+    "charge": "test",
+    "type": "専門関連",
+    "code": "123487",
+    "grade": 2,
+    "input": false
+  }
+]
