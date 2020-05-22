@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="SetTimetable.css">
+    <title>時間割照会・入力</title>
+    <script type="text/javascript" src="js\jQuery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js\SetTimetable.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="user-data">
+            <p>システムのタイトル</p>
+            <ul class="user-list">
+                <li class="user-list__id">EB15E058</li>
+                <li class="user-list__name">北山 勝登</li>
+            </ul>
+            <p class="user-data__image"><img src="pic\1403724_3L1.jpg"></p>
+        </div>
+        <nav>
+            <div class="tab-panels col-xs-12">
+                <ul class="tab">
+                    <li rel="panel__1" class="active"> 時間割照会・登録</li>
+                    <li rel="panel__2"> 講義一覧検索</li>
+                    <li rel="panel__3"> 掲示板</li>
+                    <li rel="panel__4"> マスタ登録</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="main-content">
+        <p class="main-content__txt-term">2020年前期 時間割表</p>
+        <p><button id="main-content__btn-confirm"> 確定 </button></p>
+        <p id="main-content__txt-grades"></p>
+        <div class="timetable">
+            <table class="timetable__table">
+                <tr class="timetable__table-weekday-row">
+                    <th class="period-column"></th>
+                    <th>月</th>
+                    <th>火</th>
+                    <th>水</th>
+                    <th>木</th>
+                    <th>金</th>
+                    <th>土</th>
+                </tr>
+                <tr class="period-1">
+                    <td class="period-column">1限</td>
+                    <td class="period-mon1">
+                        <div class="class-data">
+                            <ul class="class-element-mon1">
+                                <li id="class-element-mon1__name"></li>
+                                <li id="class-element-mon1__charge"></li>
+                                <li id="class-element-mon1__type"></li>
+                                <li id="class-element-mon1__code"></li>
+                                <li id="class-element-mon1__grade"></li>
+                            </ul>
+                            <input type="hidden" id="mon1-classcode" value="" />
+                            <input type="hidden" id="mon1-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-mon1">登録・変更</button>
+                    </td>
+                    <td class="period-tue1">
+                        <div class="class-data">
+                            <ul class="class-element-tue1">
+                                <li id="class-element-tue1__name"></li>
+                                <li id="class-element-tue1__charge"></li>
+                                <li id="class-element-tue1__type"></li>
+                                <li id="class-element-tue1__code"></li>
+                                <li id="class-element-tue1__grade"></li>
+                            </ul>
+                        </div>
+                        <input type="hidden" id="tue1-classcode" value="" />
+                        <input type="hidden" id="tue1-grade" value="" />
+                        <button class="class-data__btn-timetable" id="btn-tue1">登録・変更</button>
+                    </td>
+                    <td class="period-wed1">
+                        <div class="class-data">
+                            <ul class="class-element-wed1">
+                                <li id="class-element-wed1__name"></li>
+                                <li id="class-element-wed1__charge"></li>
+                                <li id="class-element-wed1__type"></li>
+                                <li id="class-element-wed1__code"></li>
+                                <li id="class-element-wed1__grade"></li>
+                            </ul>
+                            <input type="hidden" id="wed1-classcode" value="" />
+                            <input type="hidden" id="wed1-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-wed1">登録・変更</button>
+                    </td>
+                    <td class="period-thu1">
+                        <div class="class-data">
+                            <ul class="class-element-thu1">
+                                <li id="class-element-thu1__name"></li>
+                                <li id="class-element-thu1__charge"></li>
+                                <li id="class-element-thu1__type"></li>
+                                <li id="class-element-thu1__code"></li>
+                                <li id="class-element-thu1__grade"></li>
+                            </ul>
+                            <input type="hidden" id="thu-classcode" value="" />
+                            <input type="hidden" id="thu1-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-thu1">登録・変更</button>
+                    </td>
+                    <td class="period-fri1">
+                        <div class="class-data">
+                            <ul class="class-element-fri1">
+                                <li id="class-element-fri1__name"></li>
+                                <li id="class-element-fri1__charge"></li>
+                                <li id="class-element-fri1__type"></li>
+                                <li id="class-element-fri1__code"></li>
+                                <li id="class-element-fri1__grade"></li>
+                            </ul>
+                            <input type="hidden" id="fri1-classcode" value="" />
+                            <input type="hidden" id="fri1-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-fri1">登録・変更</button>
+                    </td>
+                    <td class="period-sat1">
+                        <div class="class-data">
+                            <ul class="class-element-sat1">
+                                <li id="class-element-sat1__name"></li>
+                                <li id="class-element-sat1__charge"></li>
+                                <li id="class-element-sat1__type"></li>
+                                <li id="class-element-sat1__code"></li>
+                                <li id="class-element-sat1__grade"></li>
+                            </ul>
+                            <input type="hidden" id="sat1-classcode" value="" />
+                            <input type="hidden" id="sat1-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-sat1">登録・変更</button>
+                    </td>
+                </tr>
+                <tr class="period-2">
+                    <td class="period-column">2限</td>
+                    <td class="period-mon2">
+                        <div class="class-data">
+                            <ul class="class-element-mon2">
+                                <li id="class-element-mon2__name"></li>
+                                <li id="class-element-mon2__charge"></li>
+                                <li id="class-element-mon2__type"></li>
+                                <li id="class-element-mon2__code"></li>
+                                <li id="class-element-mon2__grade"></li>
+                            </ul>
+                            <input type="hidden" id="mon2-classcode" value="" />
+                            <input type="hidden" id="mon2-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-mon2">登録・変更</button>
+                    </td>
+                    <td class="period-tue2">
+                        <div class="class-data">
+                            <ul class="class-element-tue2">
+                                <li id="class-element-tue2__name"></li>
+                                <li id="class-element-tue2__charge"></li>
+                                <li id="class-element-tue2__type"></li>
+                                <li id="class-element-tue2__code"></li>
+                                <li id="class-element-tue2__grade"></li>
+                            </ul>
+                            <input type="hidden" id="tue2-classcode" value="" />
+                            <input type="hidden" id="tue2-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-tue2">登録・変更</button>
+                    </td>
+                    <td class="period-wed2">
+                        <div class="class-data">
+                            <ul class="class-element-wed2">
+                                <li id="class-element-wed2__name"></li>
+                                <li id="class-element-wed2__charge"></li>
+                                <li id="class-element-wed2__type"></li>
+                                <li id="class-element-wed2__code"></li>
+                                <li id="class-element-wed2__grade"></li>
+                            </ul>
+                            <input type="hidden" id="wed2-classcode" value="" />
+                            <input type="hidden" id="wed2-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-wed2">登録・変更</button>
+                    </td>
+                    <td class="period-thu2">
+                        <div class="class-data">
+                            <ul class="class-element-thu2">
+                                <li id="class-element-thu2__name"></li>
+                                <li id="class-element-thu2__charge"></li>
+                                <li id="class-element-thu2__type"></li>
+                                <li id="class-element-thu2__code"></li>
+                                <li id="class-element-thu2__grade"></li>
+                            </ul>
+                            <input type="hidden" id="thu2-classcode" value="" />
+                            <input type="hidden" id="thu2-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-thu2">登録・変更</button>
+                    </td>
+                    <td class="period-fri2">
+                        <div class="class-data">
+                            <ul class="class-element-fri2">
+                                <li id="class-element-fri2__name"></li>
+                                <li id="class-element-fri2__charge"></li>
+                                <li id="class-element-fri2__type"></li>
+                                <li id="class-element-fri2__code"></li>
+                                <li id="class-element-fri2__grade"></li>
+                            </ul>
+                            <input type="hidden" id="fri2-classcode" value="" />
+                            <input type="hidden" id="fri2-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-fri2">登録・変更</button>
+                    </td>
+                    <td class="period-sat2">
+                        <div class="class-data">
+                            <ul class="class-element-sat2">
+                                <li id="class-element-sat2__name"></li>
+                                <li id="class-element-sat2__charge"></li>
+                                <li id="class-element-sat2__type"></li>
+                                <li id="class-element-sat2__code"></li>
+                                <li id="class-element-sat2__grade"></li>
+                            </ul>
+                            <input type="hidden" id="sat2-classcode" value="" />
+                            <input type="hidden" id="sat2-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-sat2">登録・変更</button>
+                    </td>
+                </tr>
+                <tr class="period-3">
+                    <td class="period-column">3限</td>
+                    <td class="period-mon3">
+                        <div class="class-data">
+                            <ul class="class-element-mon3">
+                                <li id="class-element-mon3__name"></li>
+                                <li id="class-element-mon3__charge"></li>
+                                <li id="class-element-mon3__type"></li>
+                                <li id="class-element-mon3__code"></li>
+                                <li id="class-element-mon3__grade"></li>
+                            </ul>
+                            <input type="hidden" id="mon3-classcode" value="" />
+                            <input type="hidden" id="mon3-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-mon3">登録・変更</button>
+                    </td>
+                    <td class="period-tue3">
+                        <div class="class-data">
+                            <ul class="class-element-tue3">
+                                <li id="class-element-tue3__name"></li>
+                                <li id="class-element-tue3__charge"></li>
+                                <li id="class-element-tue3__type"></li>
+                                <li id="class-element-tue3__code"></li>
+                                <li id="class-element-tue3__grade"></li>
+                            </ul>
+                            <input type="hidden" id="tue3-classcode" value="" />
+                            <input type="hidden" id="tue3-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-tue3">登録・変更</button>
+                    </td>
+                    <td class="period-wed3">
+                        <div class="class-data">
+                            <ul class="class-element-wed3">
+                                <li id="class-element-wed3__name"></li>
+                                <li id="class-element-wed3__charge"></li>
+                                <li id="class-element-wed3__type"></li>
+                                <li id="class-element-wed3__code"></li>
+                                <li id="class-element-wed3__grade"></li>
+                            </ul>
+                            <input type="hidden" id="wed3-classcode" value="" />
+                            <input type="hidden" id="wed3-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-wed3">登録・変更</button>
+                    </td>
+                    <td class="period-thu3">
+                        <div class="class-data">
+                            <ul class="class-element-thu3">
+                                <li id="class-element-thu3__name"></li>
+                                <li id="class-element-thu3__charge"></li>
+                                <li id="class-element-thu3__type"></li>
+                                <li id="class-element-thu3__code"></li>
+                                <li id="class-element-thu3__grade"></li>
+                            </ul>
+                            <input type="hidden" id="thu3-classcode" value="" />
+                            <input type="hidden" id="thu3-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-thu3">登録・変更</button>
+                    </td>
+                    <td class="period-fri3">
+                        <div class="class-data">
+                            <ul class="class-element-fri3">
+                                <li id="class-element-fri3__name"></li>
+                                <li id="class-element-fri3__charge"></li>
+                                <li id="class-element-fri3__type"></li>
+                                <li id="class-element-fri3__code"></li>
+                                <li id="class-element-fri3__grade"></li>
+                            </ul>
+                            <input type="hidden" id="fri3-classcode" value="" />
+                            <input type="hidden" id="fri3-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-fri3">登録・変更</button>
+                    </td>
+                    <td class="period-sat3">
+                        <div class="class-data">
+                            <ul class="class-element-sat3">
+                                <li id="class-element-sat3__name"></li>
+                                <li id="class-element-sat3__charge"></li>
+                                <li id="class-element-sat3__type"></li>
+                                <li id="class-element-sat3__code"></li>
+                                <li id="class-element-sat3__grade"></li>
+                            </ul>
+                            <input type="hidden" id="sat3-classcode" value="" />
+                            <input type="hidden" id="sat3-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-sat3">登録・変更</button>
+                    </td>
+                </tr>
+                <tr class="period-4">
+                    <td class="period-column">4限</td>
+                    <td class="period-mon4">
+                        <div class="class-data">
+                            <ul class="class-element-mon4">
+                                <li id="class-element-mon4__name"></li>
+                                <li id="class-element-mon4__charge"></li>
+                                <li id="class-element-mon4__type"></li>
+                                <li id="class-element-mon4__code"></li>
+                                <li id="class-element-mon4__grade"></li>
+                            </ul>
+                            <input type="hidden" id="mon4-classcode" value="" />
+                            <input type="hidden" id="mon4-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-mon4">登録・変更</button>
+                    </td>
+                    <td class="period-tue4">
+                        <div class="class-data">
+                            <ul class="class-element-tue4">
+                                <li id="class-element-tue4__name"></li>
+                                <li id="class-element-tue4__charge"></li>
+                                <li id="class-element-tue4__type"></li>
+                                <li id="class-element-tue4__code"></li>
+                                <li id="class-element-tue4__grade"></li>
+                            </ul>
+                            <input type="hidden" id="tue4-classcode" value="" />
+                            <input type="hidden" id="tue4-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-tue4">登録・変更</button>
+                    </td>
+                    <td class="period-wed4">
+                        <div class="class-data">
+                            <ul class="class-element-wed4">
+                                <li id="class-element-wed4__name"></li>
+                                <li id="class-element-wed4__charge"></li>
+                                <li id="class-element-wed4__type"></li>
+                                <li id="class-element-wed4__code"></li>
+                                <li id="class-element-wed4__grade"></li>
+                            </ul>
+                            <input type="hidden" id="wed4-classcode" value="" />
+                            <input type="hidden" id="wed4-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-wed4">登録・変更</button>
+                    </td>
+                    <td class="period-thu4">
+                        <div class="class-data">
+                            <ul class="class-element-thu4">
+                                <li id="class-element-thu4__name"></li>
+                                <li id="class-element-thu4__charge"></li>
+                                <li id="class-element-thu4__type"></li>
+                                <li id="class-element-thu4__code"></li>
+                                <li id="class-element-thu4__grade"></li>
+                            </ul>
+                            <input type="hidden" id="thu4-classcode" value="" />
+                            <input type="hidden" id="thu4-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-thu4">登録・変更</button>
+                    </td>
+                    <td class="period-fri4">
+                        <div class="class-data">
+                            <ul class="class-element-fri4">
+                                <li id="class-element-fri4__name"></li>
+                                <li id="class-element-fri4__charge"></li>
+                                <li id="class-element-fri4__type"></li>
+                                <li id="class-element-fri4__code"></li>
+                                <li id="class-element-fri4__grade"></li>
+                            </ul>
+                            <input type="hidden" id="fri4-classcode" value="" />
+                            <input type="hidden" id="fri4-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-fri4">登録・変更</button>
+                    </td>
+                    <td class="period-sat4">
+                        <div class="class-data">
+                            <ul class="class-element-sat4">
+                                <li id="class-element-sat4__name"></li>
+                                <li id="class-element-sat4__charge"></li>
+                                <li id="class-element-sat4__type"></li>
+                                <li id="class-element-sat4__code"></li>
+                                <li id="class-element-sat4__grade"></li>
+                            </ul>
+                            <input type="hidden" id="sat4-classcode" value="" />
+                            <input type="hidden" id="sat4-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-sat4">登録・変更</button>
+                    </td>
+                </tr>
+                <tr class="period-5">
+                    <td class="period-column">5限</td>
+                    <td class="period-mon5">
+                        <div class="class-data">
+                            <ul class="class-element-mon5">
+                                <li id="class-element-mon5__name"></li>
+                                <li id="class-element-mon5__charge"></li>
+                                <li id="class-element-mon5__type"></li>
+                                <li id="class-element-mon5__code"></li>
+                                <li id="class-element-mon5__grade"></li>
+                            </ul>
+                            <input type="hidden" id="mon5-classcode" value="" />
+                            <input type="hidden" id="mon5-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-mon5">登録・変更</button>
+                    </td>
+                    <td class="period-tue5">
+                        <div class="class-data">
+                            <ul class="class-element-tue5">
+                                <li id="class-element-tue5__name"></li>
+                                <li id="class-element-tue5__charge"></li>
+                                <li id="class-element-tue5__type"></li>
+                                <li id="class-element-tue5__code"></li>
+                                <li id="class-element-tue5__grade"></li>
+                            </ul>
+                            <input type="hidden" id="tue5-classcode" value="" />
+                            <input type="hidden" id="tue5-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-tue5">登録・変更</button>
+                    </td>
+                    <td class="period-tue5">
+                        <div class="class-data">
+                            <ul class="class-element-wed5">
+                                <li id="class-element-wed5__name"></li>
+                                <li id="class-element-wed5__charge"></li>
+                                <li id="class-element-wed5__type"></li>
+                                <li id="class-element-wed5__code"></li>
+                                <li id="class-element-wed5__grade"></li>
+                            </ul>
+                            <input type="hidden" id="wed5-classcode" value="" />
+                            <input type="hidden" id="wed5-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-wed5">登録・変更</button>
+                    </td>
+                    <td class="period-thu5">
+                        <div class="class-data">
+                            <ul class="class-element-thu5">
+                                <li id="class-element-thu5__name"></li>
+                                <li id="class-element-thu5__charge"></li>
+                                <li id="class-element-thu5__type"></li>
+                                <li id="class-element-thu5__code"></li>
+                                <li id="class-element-thu5__grade"></li>
+                            </ul>
+                            <input type="hidden" id="thu5-classcode" value="" />
+                            <input type="hidden" id="thu5-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-thu5">登録・変更</button>
+                    <td class="period-thu5">
+                        <div class="class-data">
+                            <ul class="class-element-fri5">
+                                <li id="class-element-fri5__name"></li>
+                                <li id="class-element-fri5__charge"></li>
+                                <li id="class-element-fri5__type"></li>
+                                <li id="class-element-fri5__code"></li>
+                                <li id="class-element-fri5__grade"></li>
+                            </ul>
+                            <input type="hidden" id="fri5-classcode" value="" />
+                            <input type="hidden" id="fri5-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-sat5">登録・変更</button>
+                    </td>
+                    <td class="period-sat5">
+                        <div class="class-data">
+                            <ul class="class-element-sat5">
+                                <li id="class-element-sat5__name"></li>
+                                <li id="class-element-sat5__charge"></li>
+                                <li id="class-element-sat5__type"></li>
+                                <li id="class-element-sat5__code"></li>
+                                <li id="class-element-sat5__grade"></li>
+                            </ul>
+                            <input type="hidden" id="sat5-classcode" value="" />
+                            <input type="hidden" id="sat5-grade" value="" />
+                        </div>
+                        <button class="class-data__btn-timetable" id="btn-sat5">登録・変更</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <div class="menu">
+                <ul class="class-list">
+                </ul>
+            </div>
+            <a class="js-modal-close" href="">閉じる</a>
+        </div><!--modal__inner-->
+    </div><!--modal-->
+</body>
+</html>
