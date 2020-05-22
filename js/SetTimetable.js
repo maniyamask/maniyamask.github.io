@@ -254,7 +254,7 @@ $(document).on('click', '.class-list li', function () {
 //Json取得関数
 function setPreference() {
     $.ajaxSetup({ async: false });//同期通信(json取ってくるまで待つ)
-    $.getJSON("../testdata.json", function (data) {
+    $.getJSON("../data/class.json", function (data) {
         testData = data;
     });
     $.ajaxSetup({ async: true });
